@@ -1,12 +1,12 @@
 #Compiler options
-CC = gcc
-CFLAGS = -Wall -I ./include
-COMPILE = $(CC) -c $(CFLAGS)
-BUILD = $(CC) $(CFLAGS)
+CC=gcc
+CFLAGS=-Wall -I ./include
+COMPILE=$(CC) -c $(CFLAGS)
+BUILD=$(CC) $(CFLAGS)
 
 # Directories
-SRC = src
-BIN = bin
+SRC=src
+BIN=bin
 
 # Libraries
 OBJS=random.o singly.o doubly.o stack.o data.o
