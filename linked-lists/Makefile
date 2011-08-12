@@ -14,12 +14,11 @@ OUT_OBJS=$(addprefix $(BIN)/,$(OBJS))
 
 # Programs
 PROGS=ex-singly ex-doubly ex-stack
-OUT_PROGS=$(addprefix $(BIN)/,$(PROGS))
 
-all: $(OUT_PROGS)
+all: $(PROGS)
 
-$(BIN)/%: $(OUT_OBJS) $(SRC)/%.c
-	$(BUILD) -o $@ $^
+%: $(OUT_OBJS) $(SRC)/%.c
+	$(BUILD) -o $(BIN)/$@ $^
 
 $(BIN)/%.o: $(SRC)/%.c
 	$(COMPILE) -o $@ $<	
