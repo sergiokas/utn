@@ -17,10 +17,13 @@ PROGS=ex-singly ex-doubly ex-stack
 
 all: $(PROGS)
 
+bin:	
+	if [ ! -d $(BIN) ]; then mkdir $(BIN); fi
+
 %: $(OUT_OBJS) $(SRC)/%.c
 	$(BUILD) -o $(BIN)/$@ $^
 
-$(BIN)/%.o: $(SRC)/%.c
+$(BIN)/%.o: $(SRC)/%.c bin
 	$(COMPILE) -o $@ $<	
 
 clean:
