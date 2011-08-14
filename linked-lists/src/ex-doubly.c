@@ -3,48 +3,55 @@
 #include "doubly.h"
 #include "random.h"
 
-// Crop some list elements
-void crop_list( struct doubly_node ** L );
-// Sort the list
+// Elimina algunos elementos de la lista
+void crop_list( struct doubly_node ** );
+
+// Ordena la lista
 void sort_list( struct doubly_node * );
-// Print list
+
+// Imprime la lista
 void print_list( struct doubly_node * );
 
 int main(int argc, char * argv[], char *arge[]) {
 
 	int i;
-	// Main list
+	// Lista principal
 	struct doubly_node *L = NULL;
 
-	// Generate datasets
+	// Genera sets de datos
 	random_init();
 	for(i=0; i<10; i++)
 		doubly_insert(&L, get_data());
 
-	// Print the list
-	printf("Original List\n");
+	// Imprime la lista original
+	printf("Lista original\n");
 	print_list(L);
 
-	// Print the list with some deleted data
+	// Imprime la lista con algunos datos removidos
 	crop_list(&L);
-	printf("\nCropped List\n");
+	printf("\nLista recortada\n");
 	print_list(L);
 
-	// Print the sorted list
+	// Imprime la lista ordenada
 	sort_list(L);
-	printf("\nSorted List\n");
+	printf("\nLista ordenada\n");
+	print_list(L);
+
+	// Imprime la lista con algunos datos ordenados
+	doubly_insert_after( L->next, get_data());
+	doubly_insert_before( L->next, get_data());
+	printf("\nLista con elementos adicionales\n");
 	print_list(L);
 
 	return 0;
 }
 
-// Crop some list elements
 void crop_list( struct doubly_node ** L ) {
 	struct doubly_node * aux;
 	aux = *L;
 	while( aux )
 	{
-		// A very hardcoded condition
+		// Condici—n MUY hardcodeada
 		if( ((data_t *) aux->data)->r1 < 50 ) {
 			doubly_delete( L, aux );
 		}
@@ -52,7 +59,6 @@ void crop_list( struct doubly_node ** L ) {
 	}
 }
 
-// Sort list with data criteria
 void sort_list( struct doubly_node * list ) {
 	struct doubly_node *i, *j;
 
@@ -69,7 +75,6 @@ void sort_list( struct doubly_node * list ) {
 
 }
 
-// Print entire list
 void print_list( struct doubly_node *list ) {
 	while( list ) {
 		print_data((data_t *) list->data);

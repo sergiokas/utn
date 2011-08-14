@@ -9,7 +9,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// Insert an element on the list
 void doubly_insert (struct doubly_node ** list, void * data)
 {
 	struct doubly_node * aux;
@@ -38,7 +37,6 @@ void doubly_insert (struct doubly_node ** list, void * data)
 	}
 }
 
-// Delete an element from the list
 void doubly_delete (struct doubly_node ** list, struct doubly_node * node)
 {
 	struct doubly_node * prev = NULL;
@@ -63,11 +61,44 @@ void doubly_delete (struct doubly_node ** list, struct doubly_node * node)
 	free(node);
 }
 
-// Swap two list elements.
 void doubly_swap (struct doubly_node * a, struct doubly_node * b)
 {
 	void * aux;
 	aux = a->data;
 	a->data = b->data;
 	b->data = aux;
+}
+
+void doubly_insert_before( struct doubly_node * l, void * data) {
+	struct doubly_node * node;
+
+	if( l != NULL )
+	{
+		node = (struct doubly_node *) malloc(sizeof(struct doubly_node));
+		node->data = data;
+		node->next = l;
+		node->prev = l->prev;
+		if( l->prev != NULL )
+		{
+			l->prev->next = node;
+		}
+		l->prev = node;
+	}
+}
+
+void doubly_insert_after( struct doubly_node * l, void * data) {
+	struct doubly_node * node;
+
+	if( l != NULL )
+	{
+		node = (struct doubly_node *) malloc(sizeof(struct doubly_node));
+		node->data = data;
+		node->prev = l;
+		node->next = l->next;
+		if( l->next != NULL )
+		{
+			l->next->prev = node;
+		}
+		l->next = node;
+	}
 }

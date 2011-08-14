@@ -56,3 +56,12 @@ void singly_delete( struct singly_node ** list, struct singly_node * node ) {
 	free( node->data );
 	free( node );
 }
+
+// Swap two list elements.
+void singly_swap (struct singly_node * a, struct singly_node * b)
+{
+	void * aux;
+	aux = a->data;
+	a->data = b->data;
+	b->data = aux;
+}
