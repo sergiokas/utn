@@ -9,7 +9,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// Push an item into the stack
 void stack_push (struct stack_node ** list, void * data)
 {
 	struct stack_node * node;
@@ -19,7 +18,6 @@ void stack_push (struct stack_node ** list, void * data)
 	*list = node;
 }
 
-// Pop an item from the stack, return pointer to the data
 void * stack_pop (struct stack_node ** list)
 {
 	void * data = NULL;
@@ -34,4 +32,14 @@ void * stack_pop (struct stack_node ** list)
 
 	free(node);
 	return data;
+}
+
+void stack_destroy( struct stack_node ** list ) 
+{
+	void * data;
+
+	while( *list != NULL) {
+		data = stack_pop( list );
+		free(data);
+	}
 }

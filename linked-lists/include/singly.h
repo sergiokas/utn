@@ -23,4 +23,10 @@ void singly_delete( struct singly_node **, struct singly_node *);
 // Intercambia los datos dos nodos de una lista
 void singly_swap (struct singly_node *, struct singly_node *);
 
+// Elimina la lista completa
+void singly_destroy( struct singly_node **);
+
+// Desvincula la lista sin eliminar sus datos
+void singly_unlink( struct singly_node **);
+
 #endif /* SINGLY_H_ */

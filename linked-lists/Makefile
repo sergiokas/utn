@@ -13,7 +13,7 @@ OBJS=random.o singly.o doubly.o stack.o data.o
 OUT_OBJS=$(addprefix $(BIN)/,$(OBJS))
 
 # Programs
-PROGS=ex-singly ex-doubly ex-stack
+PROGS=ex-singly ex-doubly ex-stack ex-multiple ex-shared
 
 all: $(PROGS)
 

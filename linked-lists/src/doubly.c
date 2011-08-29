@@ -102,3 +102,16 @@ void doubly_insert_after( struct doubly_node * l, void * data) {
 		l->next = node;
 	}
 }
+
+void doubly_destroy (struct doubly_node ** L )
+{
+    struct doubly_node *aux;
+
+    while( *L != NULL ) {
+        aux = *L;
+        *L = (*L)->next;
+        free(aux->data);
+        free(aux);
+    }
+}
+

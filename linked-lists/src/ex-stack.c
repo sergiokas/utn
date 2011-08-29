@@ -21,11 +21,14 @@ int main(int argc, char * argv[], char *arge[])
 	}
 
 	// Pop elements from the stack
-	printf("Popping...\n");
+	printf("\nPopping...\n");
 	while( (data=stack_pop(&S)) != NULL )
 	{
 		print_data( data );
 	}
+
+	// Destroy the list and free memory
+	stack_destroy(&S);
 
 	return 0;
 }

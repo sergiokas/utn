@@ -9,7 +9,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// Insert an item on the list
 void singly_insert( struct singly_node ** list, void * data ) {
 	struct singly_node * aux;
 	struct singly_node * node;
@@ -34,7 +33,6 @@ void singly_insert( struct singly_node ** list, void * data ) {
 	}
 }
 
-// Delete an item from the list
 void singly_delete( struct singly_node ** list, struct singly_node * node ) {
 	
 	struct singly_node * aux;
@@ -57,7 +55,6 @@ void singly_delete( struct singly_node ** list, struct singly_node * node ) {
 	free( node );
 }
 
-// Swap two list elements.
 void singly_swap (struct singly_node * a, struct singly_node * b)
 {
 	void * aux;
@@ -65,3 +62,27 @@ void singly_swap (struct singly_node * a, struct singly_node * b)
 	a->data = b->data;
 	b->data = aux;
 }
+
+void singly_destroy (struct singly_node ** L ) 
+{
+	struct singly_node *aux;
+
+	while( *L != NULL ) {
+		aux = *L;
+		*L = (*L)->next;
+		free(aux->data);
+		free(aux);
+	}
+}
+
+void singly_unlink( struct singly_node ** L )
+{
+	struct singly_node * aux;
+
+	while( *L != NULL ) {
+		aux = *L;
+		*L = (*L)->next;
+		free(aux);
+	}	
+}
+

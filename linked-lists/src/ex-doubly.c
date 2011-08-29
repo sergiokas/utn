@@ -10,7 +10,7 @@ void crop_list( struct doubly_node ** );
 void sort_list( struct doubly_node * );
 
 // Imprime la lista
-void print_list( struct doubly_node * );
+void print_list( const char *, struct doubly_node * );
 
 int main(int argc, char * argv[], char *arge[]) {
 
@@ -24,24 +24,23 @@ int main(int argc, char * argv[], char *arge[]) {
 		doubly_insert(&L, get_data());
 
 	// Imprime la lista original
-	printf("Lista original\n");
-	print_list(L);
+	print_list("Lista original", L);
 
 	// Imprime la lista con algunos datos removidos
 	crop_list(&L);
-	printf("\nLista recortada\n");
-	print_list(L);
+	print_list("Lista recortada", L);
 
 	// Imprime la lista ordenada
 	sort_list(L);
-	printf("\nLista ordenada\n");
-	print_list(L);
+	print_list("Lista ordenada", L);
 
 	// Imprime la lista con algunos datos ordenados
 	doubly_insert_after( L->next, get_data());
 	doubly_insert_before( L->next, get_data());
-	printf("\nLista con elementos adicionales\n");
-	print_list(L);
+	print_list("Lista con elementos adicionales", L);
+
+	// Libera memoria
+	doubly_destroy(&L);
 
 	return 0;
 }
@@ -75,7 +74,8 @@ void sort_list( struct doubly_node * list ) {
 
 }
 
-void print_list( struct doubly_node *list ) {
+void print_list( const char * title, struct doubly_node *list ) {
+	printf("\n%s\n", title);
 	while( list ) {
 		print_data((data_t *) list->data);
 		list = list->next;

@@ -30,4 +30,7 @@ void doubly_insert_before( struct doubly_node *, void *);
 // Inserta un nuevo nodo después del nodo especificado
 void doubly_insert_after( struct doubly_node *, void *);
 
+// Elimina la lista completa
+void doubly_destroy( struct doubly_node **);
+
 #endif /* DOUBLY_H_ */
