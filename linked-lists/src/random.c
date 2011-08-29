@@ -6,5 +6,5 @@ void random_init(void) {
 }
 
 int random_between( int a, int b ) {
-	return a + random() % (b+1);
+	return a + random() % (b);
 }

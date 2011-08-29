@@ -37,7 +37,7 @@ int main(int argc, char * argv[], char *arge[])
 	printf("\nLista de Divisiones\n");
 	saux = S;
 	daux = D;
-	while( daux != NULL ) {
+	while( daux != NULL && saux != NULL) {
 		printf( "%d / %d\t= %0.3f\n",
 			(int) ((data_t *)saux->data)->r1,
 			(int) ((data_t *)saux->data)->r2,
