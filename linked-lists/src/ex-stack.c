@@ -3,6 +3,9 @@
 #include "random.h"
 #include "stack.h"
 
+/**
+ * Ejemplo que utiliza un stack para imprimir una lista en orden inverso.
+ */
 int main(int argc, char * argv[], char *arge[])
 {
 	int i;

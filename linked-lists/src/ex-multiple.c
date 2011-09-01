@@ -5,9 +5,10 @@
 #include "doubly.h"
 #include "random.h"
 
-// Imprime la lista
+/** Imprime la lista */
 void print_list( const char *, struct singly_node * );
 
+/** Ejemplo de uso de listas genericas para guardar multiples tipos de datos */
 int main(int argc, char * argv[], char *arge[])
 {
 	int i;

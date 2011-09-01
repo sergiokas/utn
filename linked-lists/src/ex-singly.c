@@ -3,16 +3,16 @@
 #include "singly.h"
 #include "random.h"
 
-// Elimina algunos datos de la lista
+/** Elimina algunos datos de la lista */
 void crop_list( struct singly_node ** );
-// Imprime la lista
+/** Imprime la lista */
 void print_list( const char *, struct singly_node * );
-// Ordena la lista
+/** Ordena la lista */
 void sort_list( struct singly_node * );
 
+/** Ejemplo de lista simplemente enlazada **/
 int main(int argc, char * argv[], char *arge[])
 {
-
 	int i;
 
 	// Lista principal
@@ -55,7 +55,7 @@ void crop_list( struct singly_node ** L)
 	aux = *L;
 	while( aux )
 	{
-		// Una condici—n muy hardcodeada
+		// Una pregunta muy hardcodeada
 		if( ((data_t *) aux->data)->r1 < 50 ) {
 			singly_delete(L, aux);
 		}

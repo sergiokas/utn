@@ -3,15 +3,16 @@
 #include "doubly.h"
 #include "random.h"
 
-// Elimina algunos elementos de la lista
+/** Elimina algunos elementos de la lista */
 void crop_list( struct doubly_node ** );
 
-// Ordena la lista
+/** Ordena la lista */
 void sort_list( struct doubly_node * );
 
-// Imprime la lista
+/** Imprime la lista */
 void print_list( const char *, struct doubly_node * );
 
+/** Ejemplo de lista doblemente enlazada */
 int main(int argc, char * argv[], char *arge[]) {
 
 	int i;
@@ -50,7 +51,7 @@ void crop_list( struct doubly_node ** L ) {
 	aux = *L;
 	while( aux )
 	{
-		// Condici—n MUY hardcodeada
+		// Condicion MUY hardcodeada
 		if( ((data_t *) aux->data)->r1 < 50 ) {
 			doubly_delete( L, aux );
 		}
