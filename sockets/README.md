@@ -1,5 +1,10 @@
-Sockets Examples
-----------------
+Sockets
+=======
+
+A collection of socket examples in the C programming language.
+
+Directory Structure
+-------------------
 
 __base__ - simple example of a client/server socket sending one string.  
 __binary__ - examplie of a persistent server receiving images through multiple clients.  
