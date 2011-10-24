@@ -1,0 +1,7 @@
+=Sockets Examples=
+
+**base** - simple example of a client/server socket sending one string.
+**binary** - examplie of a persistent server receiving images through multiple clients.
+**slides** - slides of TCP and UDP connections.
+**examples** - edited base examples of TCP and UDP client servers.
+
