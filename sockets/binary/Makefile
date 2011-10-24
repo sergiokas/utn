@@ -3,5 +3,5 @@ all:
 	gcc -Wall -o client client.c
 
 clean:
-	rm -f client server recv/*
+	rm -f client server recv/*.jpg
 
