@@ -5,7 +5,10 @@
 #include <unistd.h>		// Unix standard, para usar close()
 #include <netinet/in.h>	// Estructuras para sockets
 #include <strings.h>	// Para usar bzero()
+#include <string.h>		// Para usar bzero()
 #include "defs.h"		// Mis propias definiciones
+
+int validate_file(char *);
 
 int main (int argc, char ** argv) {
 	
@@ -20,6 +23,7 @@ int main (int argc, char ** argv) {
 	// Buffer para mandar y recibir datos
 	char buffer[BUFFER_SIZE];
 	char filename[255];
+
 	FILE * dest;
 
 	// Abre un socket
@@ -63,18 +67,31 @@ int main (int argc, char ** argv) {
 		}
 			
 		// Build the and open the destination filename
-		sprintf(filename, "recv/image-%d.jpg", rand());
-		dest = fopen(filename, "w");
-		size = 0;
-		while((result = read(clientfd, buffer, BUFFER_SIZE))) {
-			size += result; 
-			if(result>0) {
-				fwrite(buffer, 1, result, dest);
-			}
-		}
-		printf("Recibidos %d bytes desde el socket, guardado en %s\n", size, filename);
-		fclose(dest);
+		//sprintf(filename, "recv/image-%d.jpg", rand());
+		read(clientfd, filename, 255);
 
+		// validate filename
+		if(!validate_file(filename)) {
+			printf("Error recibiendo archivo no permitido %s\n", filename);
+			write(clientfd, "ER", 3);
+		}
+		else {
+		  write(clientfd, "OK", 3);
+		  dest = fopen(filename, "w");
+		  if(dest == NULL) {
+			  perror("No se puede abrir el archivo de salida");
+			  exit(ERROR);
+		  }
+		  size = 0;
+		  while((result = read(clientfd, buffer, BUFFER_SIZE))) {
+			  size += result;
+			  if(result>0) {
+				  fwrite(buffer, 1, result, dest);
+			  }
+		  }
+		  printf("Recibidos %d bytes desde el socket, guardado en %s\n", size, filename);
+		  fclose(dest);
+		}
 		// Cierra socket al terminar
 		fflush(stdout);
 		close(clientfd);
@@ -82,4 +99,12 @@ int main (int argc, char ** argv) {
 	close(socketfd);
 
 	return SUCCESS;
+}
+
+int validate_file(char * filename) {
+	return (
+		strstr(filename, ".jpg") ||
+		strstr(filename, ".gif") ||
+		strstr(filename, ".png")
+	);
 }

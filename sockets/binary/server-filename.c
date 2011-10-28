@@ -63,8 +63,14 @@ int main (int argc, char ** argv) {
 		}
 			
 		// Build the and open the destination filename
-		sprintf(filename, "recv/image-%d.jpg", rand());
+		//sprintf(filename, "recv/image-%d.jpg", rand());
+		read(clientfd, filename, 255);
 		dest = fopen(filename, "w");
+		if(dest == NULL) {
+			perror("No se puede abrir el archivo de salida");
+			exit(ERROR);
+		}
+
 		size = 0;
 		while((result = read(clientfd, buffer, BUFFER_SIZE))) {
 			size += result; 
