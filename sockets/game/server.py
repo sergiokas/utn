@@ -36,7 +36,6 @@ class TCPHandler(SocketServer.BaseRequestHandler):
         if(self.guess > SECRET):
             result = "MENOR"
 
-        print SECRET
         print "Conectado desde {}, {} dice {}, el numero secreto es {}".format(self.client_address[0], self.name, self.guess, result)
 
         return result
