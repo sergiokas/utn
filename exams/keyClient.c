@@ -15,7 +15,7 @@ int client_socket_open(char *, int);
 int main (int argc, char ** argv) {
 	
 	char host[255];
-	int socketfd, port, size, i;
+	int socketfd, port, size;
 	
 	// Buffer para mandar y recibir datos
 	char buffer[BUFFER_SIZE];
@@ -31,14 +31,8 @@ int main (int argc, char ** argv) {
 	if(socketfd)
 	{
 		bzero(buffer, 255);
-		size = read(socketfd, buffer, 255);
-		while(size>0) {
-			for(i=0; i<size; i++) {
-				buffer[i] = buffer[i] ^ (char)1;
-			}
-			fwrite(buffer,1,size,stdout);
-			size = read(socketfd, buffer, 255);
-		}
+		size = read(socketfd, buffer, 1);
+		printf("The key is: 0x%X\n", buffer[0]);
 	}
 
 	// Cierra los sockets al terminar
