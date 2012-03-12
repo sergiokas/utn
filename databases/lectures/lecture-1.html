@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>databases - lecture 1</title>
+    
+    <meta name="description" content="databases course, lecture # 1" />
+    <meta name="author" content="dev@sergiokas.com.ar" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+
+    <link href="css/impress.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+	<div id="titulo" class="step slide" data-x="0" data-y="0">
+		<q align="center">Sistemas de <strong>Bases de Datos</strong></q>
+		<p align="center"><br/><br/> 
+			Ing. Roberto G&oacute;mez<br/>
+			Ing. Sergio Kaszczyszyn
+		</p>
+		<q align="center"><img src="images/logo.png" /></q>
+	</div>
+
+    <div id="que" class="step" data-x="100" data-y="600" data-scale="1">
+        <h1><strong>&iquest;Qu&eacute; es una<br />base de datos?</strong></h1>
+    </div>
+
+    <div id="que-detalles" class="step" data-x="500" data-y="600" data-rotate="90" data-scale=".3">
+		<p>Una base de datos <i>(DB, en adelante)</i> es un <b>sistema computarizado de almacenamiento de registros</b></p>
+    </div>
+
+    <div id="que-image" class="step" data-x="400" data-y="600" data-rotate="90" data-rotate-y="60" data-scale=".3">
+		<img src="images/basic-table-1.png" />
+    </div>
+
+    <div id="para" class="step" data-x="100" data-y="900" data-scale="1">
+        <h1><strong>&iquest;Para qu&eacute; sirve una<br />base de datos?</strong></h1>
+    </div>
+
+    <div id="para-detalles" class="step" data-x="500" data-y="900" data-rotate="90" data-scale=".3">
+		<p>Una base de datos sirve para efectuar <b>operaciones sobre los registros</b>
+		de una forma <b>est&aacute;ndar</b> y <b>ordenada</b></p>
+    </div>
+
+    <div id="cuales" class="step" data-x="500" data-y="900" data-scale=".3" data-rotate="90" data-rotate-y="90" data-scale=".3">
+        <h1><strong>&iquest;Qu&eacute; operaciones se pueden <br />efectuar sobre los registros?</strong></h1>
+    </div>
+
+    <div id="cuales-detalles" class="step" data-x="800" data-y="970" data-z="-100" data-rotate="90" data-scale=".3">
+		<p>Las operaciones b&aacute;sicas son: <br />
+			&nbsp;* consultar registros<br />
+			&nbsp;* agregar registros<br />
+			&nbsp;* actualizar registros<br />
+			&nbsp;* borrar registros<br />
+		</p>
+    </div>
+
+    <div id="cuales-select" class="step" data-x="800" data-y="890" data-z="-50" data-rotate="90" data-rotate-x="40" data-rotate-y="0" data-scale=".3">
+		<p><strong>&nbsp;<br />
+			SELECT<br />
+			INSERT<br />
+			UPDATE<br />
+			DELETE<br />
+		</strong></p>
+    </div>
+
+    <div id="cuales-image" class="step" data-x="800" data-y="700" data-z="-200" data-rotate="90" data-rotate-x="75" data-scale=".3">
+		<img src="images/basic-table-operations-1.png" />
+    </div>
+
+    <div id="porque" class="step" data-x="100" data-y="1200" data-scale="1">
+        <h1><strong>&iquest;Porqu&eacute; usar<br />bases de datos?</strong></h1>
+    </div>
+
+    <div id="porque-detalles" class="step" data-x="500" data-y="1200" data-rotate="90" data-scale=".3">
+		<p>Usar bases de datos para <b>almacenar registros</b> presenta ventajas como...</p>
+    </div>
+
+    <div id="porque-pros-1" class="step" data-x="450" data-y="1200" data-z="-200" data-scale=".3" data-rotate="90" data-rotate-y="80">
+		<p><strong>Los datos pueden ser compartidos</strong> entre usuarios y aplicaciones de distinta &iacute;ndole.</p>
+    </div>
+
+    <div id="porque-pros-2" class="step" data-x="450" data-y="1200" data-z="-300" data-scale=".3" data-rotate="90" data-rotate-y="80">
+		<p><strong>Se elimina la redundancia</strong> al evitar guardar datos repetidos entre distintos usuarios o aplicaciones.</p>
+    </div>
+
+    <div id="porque-pros-3" class="step" data-x="450" data-y="1200" data-z="-400" data-scale=".3" data-rotate="90" data-rotate-y="80">
+		<p><strong>Se elimina la inconsistencia</strong> al asegurarse que todos los datos de un mismo tipo contengan los mismos campos.</p>
+    </div>
+
+    <div id="porque-pros-4" class="step" data-x="450" data-y="1200" data-z="-500" data-scale=".2" data-rotate="90" data-rotate-y="80">
+		<p><strong>Provee soporte para transacciones</strong> asegurando que los datos se guarden completos, o no se guarde nada en absoluto si ocurre un error.</p>
+    </div>
+
+    <div id="porque-pros-5" class="step" data-x="450" data-y="1200" data-z="-600" data-scale=".2" data-rotate="90" data-rotate-y="80">
+		<p><strong>Asegura la integridad</strong> garantizando que los datos que se obtienen de la base son correctos, para todo usuario o aplicaci&oacute;n, en cualquier momento.</p>
+    </div>
+
+    <div id="porque-pros-6" class="step" data-x="450" data-y="1200" data-z="-700" data-scale=".2" data-rotate="90" data-rotate-y="80">
+		<p><strong>Ofrece seguridad</strong> al proveer s&oacute;lo m&eacute;todos autorizados para acceder a los datos.</p>
+    </div>
+    
+    <div id="porque-pros-7" class="step" data-x="450" data-y="1200" data-z="-800" data-scale=".18" data-rotate="90" data-rotate-y="80">
+		<p>y lo m&aacute;s importante...</p>
+    </div>
+    
+    <div id="porque-pros-8" class="step" data-x="450" data-y="1200" data-z="-900" data-scale=".18" data-rotate="90" data-rotate-y="80">
+		<p><strong>Estandariza</strong> la forma de modelar y representar datos, evitando la creaci&oacute;n de <i>otro formato de datos personalizado m&aacute;s.</i></p>
+    </div>
+    
+    <div id="final" class="step" data-x="100" data-y="1500" data-scale="1">
+        <h1><strong>&iquest;Preguntas?</strong></h1>
+    </div>    
+    
+    <div id="overview" class="step" data-x="50" data-y="700" data-scale="2.5">
+    </div>
+	
+
+    <!-- Start impress.js -->
+    <script src="js/impress.js"></script>
+	<script>impress();</script>
+</div>
+</body>
+</html>
+
