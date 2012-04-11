@@ -1,0 +1,19 @@
+### Sistemas de Numeracion ###
+
+http://es.wikipedia.org/wiki/Sistema_de_numeraci%C3%B3n
+http://es.wikipedia.org/wiki/Sistema_binario
+http://es.wikipedia.org/wiki/Sistema_octal
+http://es.wikipedia.org/wiki/Sistema_hexadecimal
+
+### Codificaciones ###
+
+http://es.wikipedia.org/wiki/Decimal_codificado_en_binario
+http://es.wikipedia.org/wiki/C%C3%B3digo_Gray
+http://en.wikipedia.org/wiki/Excess-3
+http://es.wikipedia.org/wiki/IEEE_coma_flotante
+http://es.wikipedia.org/wiki/ASCII
+http://es.wikipedia.org/wiki/Unicode
+http://es.wikipedia.org/wiki/UTF-8
+http://es.wikipedia.org/wiki/UTF-16
+http://www.unicode.org/charts/
+
