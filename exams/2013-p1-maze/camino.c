@@ -2,10 +2,10 @@
 #include "defs.h"
 #include "camino.h"
 
-// Determina si el siguiente paso es posible
+// Determina si el siguiente paso en una dirección es posible
 int camino(paso_t *s, char dir) {
 	unsigned int p;
-	p = random()%(TOTAL_P);
+	p = rand()%(TOTAL_P);
 
 	if(p<SALIDA_P)
 		return SALIDA;

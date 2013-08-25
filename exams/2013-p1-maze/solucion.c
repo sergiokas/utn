@@ -5,8 +5,6 @@
 #include "camino.h"
 #include "solucion.h"
 
-#define PAUSA 100*100
-
 // Soluciona la mazmorra
 int solucion(void) {
 	int i;
@@ -21,6 +19,10 @@ int solucion(void) {
 	// Ciclo hasta salir del laberinto
 	do {
 		usleep(PAUSA);
+		if(L==NULL) {
+			printf("Volvimos a la entrada, el laberinto no tiene salida!\n");
+			exit(1);
+		}
 		if(L->N == ABIERTO) {
 			i=intentar(&L,'N');
 		}
@@ -105,14 +107,13 @@ char opuesto(char D) {
 	return '\0';
 }
 
-// Agrego un paso a la lista
+// Agrego un paso a la lista (stack)
 int avanzar(paso_t ** S, paso_t * p) {
 	if (*S == NULL) {
-		// Lista vacia
-		*S = p;
+		*S = p; // Lista vacía
 	}
 	else {
-		p->next = *S;
+		p->next = *S; // Agrego el elemento al comienzo
 		*S = p;
 	}
 	return 0;
@@ -120,9 +121,11 @@ int avanzar(paso_t ** S, paso_t * p) {
 
 // Retrocede un paso en la lista
 void retroceder(paso_t ** S) {
-	paso_t * aux;
-	aux = *S;
-	*S = aux->next;
-	free(aux);
+	if(*S != NULL) {
+		paso_t * aux;
+		aux = *S;
+		*S = aux->next;
+		free(aux);
+	}
 }
 

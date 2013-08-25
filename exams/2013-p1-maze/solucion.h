@@ -1,3 +1,6 @@
+// Pausa entre pasos
+#define PAUSA 100*100
+
 // Soluciona la mazmorra
 int solucion(void);
 
