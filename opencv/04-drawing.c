@@ -11,7 +11,7 @@ int main(int argc, char** argv)
     CvPoint pt1 = cvPoint(10,30);
 
     // Color
-    CvScalar blue = CV_RGB(0,0,250);
+    CvScalar blue = CV_RGB(0xFF,0xFF,0);
 
     // Text variables
     const char* text = "El Tucan";

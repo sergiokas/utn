@@ -6,11 +6,11 @@ int main(int argc, char** argv)
     // Puntero a la imagen cargada
     IplImage* img;
 
-    // Crea una ventana
-    cvNamedWindow("MyImage", CV_WINDOW_AUTOSIZE);
-
     // Carga la imagen
     img = cvLoadImage("tucan.jpg",1);
+
+    // Crea una ventana
+    cvNamedWindow("MyImage", CV_WINDOW_AUTOSIZE);
 
     // Muestra la imagen en la ventana
     cvShowImage("MyImage", img);

@@ -8,3 +8,4 @@ all:
 	gcc 03-resize.c -o bin/03-resize $(OPENCV)
 	gcc 04-drawing.c -o bin/04-drawing $(OPENCV)
 	gcc 05-save.c -o bin/05-save $(OPENCV)
+	gcc camera.c -o bin/camera $(OPENCV)
