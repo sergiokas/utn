@@ -23,4 +23,4 @@ main: $(OBJS)
 	$(COMPILE) -o $@ $<
 
 clean:
-	rm -vf *.o $(EXE)
+	rm -vf $(OBJS) $(EXE)
