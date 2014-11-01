@@ -17,7 +17,7 @@ run: main
 	./$(EXE)
 
 main: $(OBJS)
-	gcc -g -Wall -o $(EXE) $(OBJS) $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $(EXE) $(OBJS) $(LDFLAGS)
 
 %.o: %.c %.h
 	$(COMPILE) -o $@ $<
