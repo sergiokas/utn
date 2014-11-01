@@ -11,27 +11,34 @@ void inicializar(void) {
   (void) echo();         /* echo input - in color */
 
   if (has_colors()) {
-      start_color();
-      init_pair(1, COLOR_RED,     COLOR_BLACK);
-      init_pair(2, COLOR_GREEN,   COLOR_BLACK);
-      init_pair(3, COLOR_YELLOW,  COLOR_BLACK);
-      init_pair(4, COLOR_BLUE,    COLOR_BLACK);
-      init_pair(5, COLOR_CYAN,    COLOR_BLACK);
-      init_pair(6, COLOR_MAGENTA, COLOR_BLACK);
-      init_pair(7, COLOR_WHITE,   COLOR_BLACK);
+    start_color();
+    init_pair(1, CP1);
+    init_pair(2, CP2);
+    init_pair(3, CP3);
+    init_pair(4, CP4);
+    init_pair(5, CP5);
+    init_pair(6, CP6);
+    init_pair(7, CP7);
+
   }
+
+  refresh();
 }
 
-tablero_t * crear_tablero(int f, int c) {
+tablero_t * crear(int f, int c) {
   tablero_t * t;
 
   t = (tablero_t *) malloc(sizeof(tablero_t));
   t->filas = f;
   t->columnas = c;
+  t->casilleros = f*c;
 
-  // Tablero
-  t->board = newwin(c, f, BOARD_OFFSET, ((COLS - c)/2));
-  box(t->board,0,0);
+  // Todos los casilleros
+  t->board = (WINDOW **) malloc(sizeof(WINDOW*)*f*c);
+  _crear_tablero(t->board,f,c);
+
+  // Borde alrededor del tablero
+  t->border = _crear_borde(f,c);
 
   // Ventana de mensaje
   t->message = newwin(3, COLS, LINES-6, 0);
@@ -46,6 +53,47 @@ tablero_t * crear_tablero(int f, int c) {
   box(t->title,0,0);
 
   return t;
+}
+
+void _crear_tablero(WINDOW ** b, int f, int c) {
+  int i, hoff, voff, sw;
+  // Casilleros
+  hoff = (COLS-(CELL_W*c))/2;
+  voff = 0;
+  sw = 0;
+  for(i=0; i<f*c; i++) {
+    if(i && !(i%f)) {
+      voff += CELL_H;
+      sw=(sw)?0:1;
+    }
+    b[i] = newwin(CELL_H, CELL_W, BOARD_OFFSET+voff, hoff+(i%f)*CELL_W);
+    wbkgd(b[i], ((i+sw)%2) ? CELL_ODD : CELL_EVEN );
+  }
+}
+
+WINDOW * _crear_borde(int f, int c) {
+  WINDOW *b;
+  int i;
+  b = newwin(f*CELL_H+2, c*CELL_W+4, BOARD_OFFSET-1, (COLS-(CELL_W*c))/2-2);
+  box(b,1,1);
+  // Add col, row numbers
+  for(i=0;i<c;i++) {
+    mvwprintw(b, 0, (CELL_W*i)+(CELL_W/2)+2, "%d", i);
+  }
+  for(i=0;i<f;i++) {
+    mvwprintw(b, (CELL_H*i)+(CELL_H/2)+1, 0, "%d", i);
+  }
+  return b;
+}
+
+void dibujar(tablero_t * t, int f, int c, char l) {
+  WINDOW * w;
+  w = t->board[t->columnas*f+c];
+  mvwprintw(w,CELL_H/2,CELL_W/2,"%c",l);
+}
+
+void borrar(tablero_t * t, int f, int c) {
+  dibujar(t,f,c,' ');
 }
 
 int leer(tablero_t * t, char * s, char * d) {
@@ -89,15 +137,13 @@ void error(tablero_t * t, char * s) {
   wattrset(t->message, DEFAULT_COLOR);
 }
 
-
 void actualizar(tablero_t * t) {
-  wrefresh(t->board);
+  int i;
+  wrefresh(t->border);
   wrefresh(t->message);
   wrefresh(t->input);
   wrefresh(t->title);
-}
-
-int destruir_tablero(tablero_t * t) {
-  free(t);
-  return 0;
+  for(i=0; i<t->casilleros;i++) {
+    wrefresh(t->board[i]);
+  }
 }

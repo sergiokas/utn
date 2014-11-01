@@ -1,35 +1,64 @@
-#define SCORE_ROWS 2
-#define COLS_MULT 5
-#define ROWS_MULT 3
 #define BOARD_OFFSET 5
+#define CELL_H 3
+#define CELL_W 7
+
+// Color pairs
+#define CP1 COLOR_WHITE, COLOR_BLACK
+#define CP2 COLOR_BLACK, COLOR_WHITE
+#define CP3 COLOR_GREEN, COLOR_BLACK
+#define CP4 COLOR_RED,   COLOR_BLACK
+#define CP5 COLOR_WHITE, COLOR_BLACK
+#define CP6 COLOR_WHITE, COLOR_BLACK
+#define CP7 COLOR_WHITE, COLOR_BLACK
 
 // Colores
-#define DEFAULT_COLOR COLOR_PAIR(7)
-#define MSG_COLOR COLOR_PAIR(2)
-#define ERR_COLOR COLOR_PAIR(1)
-#define TITLE_COLOR COLOR_PAIR(7)
+#define DEFAULT_COLOR COLOR_PAIR(1)
+#define MSG_COLOR COLOR_PAIR(3)
+#define ERR_COLOR COLOR_PAIR(4)
+#define TITLE_COLOR COLOR_PAIR(1)
+#define CELL_ODD COLOR_PAIR(1)
+#define CELL_EVEN COLOR_PAIR(2)
 
 typedef struct {
   int filas;
   int columnas;
-  WINDOW * board; // Ventana del tablero
+  int casilleros;
+  WINDOW ** board; // Ventana del tablero
+  WINDOW * border;
   WINDOW * message;   // Ventana de mensaje
   WINDOW * input;   // Ventana de comandos
   WINDOW * title; // Ventana de titulo
 } tablero_t;
 
+// Inicializa la interfaz grafica
 void inicializar(void);
-// Crea un tablero de f=filas x c=columnas
-tablero_t * crear_tablero(int f, int c);
+
+// Crea un tablero de f=filas x c=columnas, con elementos de control
+tablero_t * crear(int f, int c);
+
+// Crea todos los casilleros del tablero
+void _crear_tablero(WINDOW ** b, int f, int c);
+
+// Crea borde del tablero
+WINDOW * _crear_borde(int f, int c);
+
+// Dibuja un caracter en una posicion del tablero
+void dibujar(tablero_t * t, int f, int c, char l);
+
+// Borra el caracter del tablero
+void borrar(tablero_t * t, int f, int c);
+
 // Lee un comando, con una etiqueta opcional
 int leer(tablero_t * t, char * s, char * d);
+
 // Muestra un mensaje
 void mensaje(tablero_t * t, char * s);
+
 // Muestra un error
 void error(tablero_t * t, char * s);
+
 // Setea el titulo del tablero
 void titulo(tablero_t * t, char * s);
-// Actualiza el tablero
+
+// Actualiza los elementos del tablero
 void actualizar(tablero_t * t);
-// Destruye el tablero
-int destruir_tablero(tablero_t * t);

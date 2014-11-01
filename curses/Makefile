@@ -6,7 +6,7 @@ COMPILE=$(CC) -c $(CFLAGS)
 BUILD=$(CC) $(CFLAGS)
 
 # Libraries
-OBJS=main.o tablero.o
+OBJS=main.o tablero.o juego.o
 
 # Programs
 EXE=main
@@ -23,5 +23,4 @@ main: $(OBJS)
 	$(COMPILE) -o $@ $<
 
 clean:
-	@echo "Cleaning up..."
-  #@rm -vf $(BIN)/*.o
+  rm -vf *.o $(EXE)
