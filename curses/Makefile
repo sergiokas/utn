@@ -19,7 +19,7 @@ run: main
 main: $(OBJS)
 	gcc -g -Wall -o $(EXE) $(OBJS) $(LDFLAGS)
 
-%.o: %.c
+%.o: %.c %.h
 	$(COMPILE) -o $@ $<
 
 clean:

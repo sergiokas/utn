@@ -1,5 +1,8 @@
+// Offset del tablero respecto al borde superior
 #define BOARD_OFFSET 5
+// Alto de celda en caracteres
 #define CELL_H 3
+// Ancho de celda en caracteres
 #define CELL_W 7
 
 // Color pairs
@@ -8,16 +11,16 @@
 #define CP3 COLOR_GREEN, COLOR_BLACK
 #define CP4 COLOR_RED,   COLOR_BLACK
 #define CP5 COLOR_WHITE, COLOR_BLACK
-#define CP6 COLOR_WHITE, COLOR_BLACK
-#define CP7 COLOR_WHITE, COLOR_BLACK
+#define CP6 COLOR_WHITE, COLOR_GREEN
+#define CP7 COLOR_WHITE, COLOR_BLUE
 
 // Colores
 #define DEFAULT_COLOR COLOR_PAIR(1)
 #define MSG_COLOR COLOR_PAIR(3)
 #define ERR_COLOR COLOR_PAIR(4)
 #define TITLE_COLOR COLOR_PAIR(1)
-#define CELL_ODD COLOR_PAIR(1)
-#define CELL_EVEN COLOR_PAIR(2)
+#define CELL_ODD COLOR_PAIR(6)
+#define CELL_EVEN COLOR_PAIR(7)
 
 typedef struct {
   int filas;
