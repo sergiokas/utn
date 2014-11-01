@@ -75,7 +75,7 @@ WINDOW * _crear_borde(int f, int c) {
   WINDOW *b;
   int i;
   b = newwin(f*CELL_H+2, c*CELL_W+4, BOARD_OFFSET-1, (COLS-(CELL_W*c))/2-2);
-  box(b,1,1);
+  box(b,0,0);
   // Add col, row numbers
   for(i=0;i<c;i++) {
     mvwprintw(b, 0, (CELL_W*i)+(CELL_W/2)+2, "%d", i);
