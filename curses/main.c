@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <string.h>
 #include <signal.h>
 #include <curses.h>
 #include "juego.h"
