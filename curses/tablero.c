@@ -62,12 +62,13 @@ void _crear_tablero(WINDOW ** b, int f, int c) {
   voff = 0;
   sw = 0;
   for(i=0; i<f*c; i++) {
-    if(i && !(i%f)) {
-      voff += CELL_H;
-      sw=(sw)?0:1;
-    }
-    b[i] = newwin(CELL_H, CELL_W, BOARD_OFFSET+voff, hoff+(i%f)*CELL_W);
-    wbkgd(b[i], ((i+sw)%2) ? CELL_ODD : CELL_EVEN );
+    // Agrega offset vertical a una nueva fila
+    voff += (i && !(i%c)) ? CELL_H : 0;
+    // Switch para color de fila par o impar
+    sw = ((i/c)%2) ? 0:1;
+    b[i] = newwin(CELL_H, CELL_W, BOARD_OFFSET+voff, hoff+(i%c)*CELL_W);
+    // Color de fondo para celda par o impar, alternando por fila par o impar
+    wbkgd(b[i], ((i%c)+sw)%2 ? CELL_ODD : CELL_EVEN );
   }
 }
 

@@ -9,8 +9,8 @@ int juego(void) {
 
     inicializar();
 
-    T = crear(8,8);
-    titulo(T, "El titulo del juego");
+    T = crear(7,4);
+    titulo(T, "Titulo del Juego");
     mensaje(T, "Bienvenido al juego");
     do {
         actualizar(T);

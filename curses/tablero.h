@@ -1,5 +1,5 @@
 // Offset del tablero respecto al borde superior
-#define BOARD_OFFSET 5
+#define BOARD_OFFSET 6
 // Alto de celda en caracteres
 #define CELL_H 3
 // Ancho de celda en caracteres
@@ -11,8 +11,8 @@
 #define CP3 COLOR_GREEN, COLOR_BLACK
 #define CP4 COLOR_RED,   COLOR_BLACK
 #define CP5 COLOR_WHITE, COLOR_BLACK
-#define CP6 COLOR_BLACK, COLOR_GREEN
-#define CP7 COLOR_WHITE, COLOR_BLUE
+#define CP6 COLOR_WHITE, COLOR_BLUE
+#define CP7 COLOR_WHITE, COLOR_RED
 
 // Colores
 #define DEFAULT_COLOR COLOR_PAIR(1)
