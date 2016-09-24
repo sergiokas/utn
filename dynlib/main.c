@@ -26,7 +26,7 @@ int main (int argc, char ** argv) {
 		return ERR_NOLIB;
 	}
 
-	// Busco la funcion que me piden
+	// Busco la funcion que me piden dentro de la libreria cargada en memoria.
 	f = dlsym(handle, argv[1]);
 
 	if(!f) {
@@ -34,7 +34,7 @@ int main (int argc, char ** argv) {
 		return ERR_NOSYM;
 	}
 
-	// Todo bien, imprimo el mensaje
+	// Todo bien, imprimo el mensaje!
 	f("Este es mi mensaje");
 
 
